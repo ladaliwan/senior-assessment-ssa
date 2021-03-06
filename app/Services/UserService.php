@@ -92,7 +92,7 @@ class UserService implements UserServiceInterface
              'lastname' => $attributes['lastname'],
              'suffixname' => $attributes['suffixname'],
              'username' => $attributes['username'],
-             'photo' => isset($attributes['photo']) ? $this->upload($attributes['photo']) : null,
+             'photo' => isset($attributes['photo']) ? $this->upload($attributes['photo']) : 'images/default-image.png',
              'type' => $attributes['type'],
              'email' => $attributes['email'],
              'password' => $this->hash($attributes['password']),
@@ -122,13 +122,15 @@ class UserService implements UserServiceInterface
     {
         $user = $this->find($id);   
 
+        $photo = is_null($user->photo)  ? 'images/default-image.png' : $user->photo;
+
         $user->prefixname = $attributes['prefixname'];
         $user->firstname = $attributes['firstname'];
         $user->middlename = $attributes['middlename'];
         $user->lastname = $attributes['lastname'];
         $user->suffixname = $attributes['suffixname'];
         $user->username = $attributes['username'];
-        $user->photo =  isset($attributes['photo']) ? $this->upload($attributes['photo']) : $user->photo;
+        $user->photo =  isset($attributes['photo']) ? $this->upload($attributes['photo']) : $photo;
         $user->type = $attributes['type'];
         $user->email = $attributes['email'];
         $user->password = $this->hash($attributes['password']);

@@ -61,7 +61,7 @@
 				  		<label class="form-label" for="photo">Photo</label>
 
 				  		<div class="card-header">Show User ID: {{$user->id}} Details
-							<img width="100" height="100" src="{{ $user->avatar ?   asset('storage/'. $user->avatar) : asset('images/default-image.png' )}}">
+							<img width="100" height="100" src="{{ asset($user->avatar) }}">
 						</div>
 
 

@@ -34,7 +34,7 @@
 							<td>{{ $user->email }}</td>
 							<td>{{ $user->type }} </td>
 							<td>
-								<img width="300" height="500" src="{{ $user->avatar ?   asset('storage/'. $user->avatar) : asset('images/default-image.png' )}}">
+								<img width="300" height="500" src="{{ asset($user->avatar) }}">
 							</td>
 							@if($user->id != '1')
 							<td>
