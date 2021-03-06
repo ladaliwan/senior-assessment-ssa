@@ -2,6 +2,12 @@
 
 return [
 
+    'per_page' => env('PER_PAGE', '20'),
+    'prefix_names' => [
+        'Mr',
+        'Mrs',
+        'Ms'
+    ], 
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -67,7 +73,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Manila',
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +180,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // App\Providers\RouteMacroServiceProvider::class,
 
     ],
 

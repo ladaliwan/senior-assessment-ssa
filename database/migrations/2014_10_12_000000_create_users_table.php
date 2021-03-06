@@ -15,10 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('prefixname')->nullable()->index();
+            $table->string('firstname')->index();
+            $table->string('middlename')->nullable()->index();
+            $table->string('lastname')->index();
+            $table->string('suffixname')->nullable()->index();
+            $table->string('username')->index();
+            $table->text('photo')->nullable();
             $table->string('email')->unique();
+            $table->string('type')->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->softDeletes();
+            
             $table->rememberToken();
             $table->timestamps();
         });
@@ -30,7 +40,8 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {            
+        $table->dropSoftDeletes();
         Schema::dropIfExists('users');
     }
 }
